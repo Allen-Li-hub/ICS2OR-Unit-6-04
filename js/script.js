@@ -15,18 +15,23 @@ if (navigator.serviceWorker) {
   })
 }
 
-const randomNumber = Math.floor(Math.random() * 6) + 1
+/**
+ * This function displays an alert.
+ */
+window.onload = function() {
+  // this calculates volume of a pyramid
 
-function updateSliderValue(valueFromSlider) {
-  document.getElementById("slider-value").innerHTML = valueFromSlider
+  const params = new URLSearchParams(document.location.search)
 
-  if (valueFromSlider == randomNumber) {
-    document.getElementById("answer").innerHTML =
-      "the answer was, " + randomNumber + "!" + " You got it! Excellent."
-  }
+  // input
+  const radius = params.get("r")
+  console.log(radius)
 
-  if (valueFromSlider != randomNumber) {
-    document.getElementById("answer").innerHTML =
-      "Sorry the answer was, " + randomNumber + "!" + " please try again."
-  }
+  // process
+  const volume = (4 / 3) * Math.PI * (radius ** 3)
+
+
+  // output
+  document.getElementById("dimension").innerHTML = "r = " + radius
+  document.getElementById("output").innerHTML = "Volume: " + volume + " cm³"
 }
